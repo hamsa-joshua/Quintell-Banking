@@ -9,6 +9,8 @@ while True:
         if register ==  1 or register == 2:
             if register == 1:
                 SignUp()
+            elif register == 2:
+                SignIn()    
         else:
             print("Please enter a Valid input From Options.")
             
