@@ -1,6 +1,7 @@
 #User Registration SIGN IN AND SIGN UP
 from databases import *
 from customer import *
+from bank import Bank
 import random
 def SignUp():
     username = input("Create username: ")
@@ -25,3 +26,17 @@ def SignUp():
     
     cobj = Customer(username , password , name , age , city , account_number)
     cobj.createuser()
+    bobj = Bank(username, account_number)
+    bobj.create_transaction_table()
+def SignIn():
+    while True:
+        username = input("Enter your username: ")
+        password = input("Enter your password: ")
+        temp = db_query(f"SELECT * FROM Customers WHERE username = '{username}' AND password = '{password}';")
+        if temp:
+            print("Sign in successful")
+            break
+        else:
+            print("Invalid username or password Try again")
+            continue
+        
