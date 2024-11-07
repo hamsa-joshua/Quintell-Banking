@@ -10,6 +10,11 @@ mydbs = sql.connect(
 
 cursor = mydbs.cursor()
 
+def db_query(str):
+    cursor.execute(str)
+    result = cursor.fetchall()
+    return result   
+
 def createcustomertable():
     cursor.execute('''
             CREATE TABLE IF NOT EXISTS Customers
