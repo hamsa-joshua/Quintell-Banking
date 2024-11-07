@@ -24,6 +24,7 @@ def createcustomertable():
             age INTEGER,
             city VARCHAR(20),
             account_number INTEGER,
+            balance INTEGER,
             status BOOLEAN)
 
 ''') 
