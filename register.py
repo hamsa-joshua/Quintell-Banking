@@ -35,7 +35,7 @@ def SignIn():
         temp = db_query(f"SELECT * FROM Customers WHERE username = '{username}' AND password = '{password}';")
         if temp:
             print("Sign in successful")
-            break
+            return username 
         else:
             print("Invalid username or password Try again")
             continue
