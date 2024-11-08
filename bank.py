@@ -21,7 +21,7 @@ class Bank:
     
     def balanceenquiry(self):
         temp = db_query(f"SELECT balance FROM Customers WHERE username = '{self.__username}';")
-        print(f"{self.__username}'s balance is {temp[0][0]}")
+        print(f"User {self.__username} your balance is : {temp[0][0]}")
         
     def deposit(self, amount):
         temp = db_query(f"SELECT balance FROM Customers WHERE username = '{self.__username}';")
@@ -32,7 +32,7 @@ class Bank:
         INSERT INTO {self.__username}_transaction (timedate, account_number, remark, amount, type)
         VALUES ('{datetime.now()}', {self.__account_number}, 'Amount Deposit', {amount},'Credit')
         """)
-        print(f"{self.__username} Amount is Sucessfully Depositted into Your Account {self.__account_number}")
+        print(f"User {self.__username} your Money is Sucessfully Deposited into Your Account {self.__account_number}")
 
     def withdraw(self, amount):
         temp = db_query(f"SELECT balance FROM Customers WHERE username = '{self.__username}';")
@@ -46,7 +46,7 @@ class Bank:
         INSERT INTO {self.__username}_transaction (timedate, account_number, remark, amount, type)
         VALUES ('{datetime.now()}', {self.__account_number}, 'Amount Withdrawn', {amount},'Debit')
         """)
-        print(f"{self.__username}Money Withdrawn Successfully from your Account {self.__account_number}")
+        print(f"User {self.__username} your Money is Successfully Withdrawn from your Account {self.__account_number}")
 
 
 
@@ -76,4 +76,4 @@ class Bank:
         VALUES ('{datetime.now()}', {self.__account_number}, 'Fund Transferred --> {receiver}', {amount},'Debit')
         """)
         
-        print(f"{self.__username}Money Transferred Successfully from your Account {self.__account_number} to {receiver}")
+        print(f"User {self.__username} Money Successfully Transferred from your Account {self.__account_number} to {receiver}")
