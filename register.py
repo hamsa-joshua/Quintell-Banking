@@ -1,6 +1,5 @@
 #User Registration SIGN IN AND SIGN UP
-from databases import *
-from customer import *
+from customer import *  
 from bank import Bank
 import random
 def SignUp():
