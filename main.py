@@ -35,21 +35,36 @@ while status:
                             "3. CASH WITHDRAW\n"
                             "4. FUND TRANSFER\n"))
         
-        if facility >=  1 or facility <= 4:
+        if facility >=  1 or facility <= 5:
             if facility == 1:
                 bobj = Bank(user,account_number[0][0])
                 bobj.balanceenquiry()
                 
+                
             elif facility == 2:
-                amount = int(input("Enter the amount to Deposit"))
-                bobj = Bank(user,account_number[0][0])
-                bobj.deposit(amount)
+                while True:
+                    try:
+                        amount = int(input("Enter the amount to Deposit"))
+                        bobj = Bank(user,account_number[0][0])
+                        bobj.deposit(amount)
+                        mydbs.commit()
+                        break
+                    except ValueError:
+                        print("Invalid input. Please enter Numeric input")
+                        continue
                 
                 
-            elif facility == 3: 
-                amount = int(input("Enter the amount to Withdraw"))
-                bobj = Bank(user,account_number[0][0])
-                bobj.withdraw(amount)
+            elif facility == 3:
+                while True:
+                    try:
+                        amount = int(input("Enter the amount to Withdraw"))
+                        bobj = Bank(user,account_number[0][0])
+                        bobj.withdraw(amount)
+                        mydbs.commit()
+                        break
+                    except ValueError:
+                        print("Invalid input. Please enter Numeric input")
+                        continue
                 
                 
             elif facility == 4:
@@ -63,6 +78,10 @@ while status:
                     except ValueError:
                         print("Invalid input. Please enter Numeric input")
                         continue
+            
+            elif facility == 5:
+                print("Thank you for using QUINTELL BANKING")
+                status = False
                         
         else:
             print("Please enter a Valid input From Options.")
