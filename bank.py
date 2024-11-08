@@ -14,7 +14,8 @@ class Bank:
             timedate VARCHAR(30),
             account_number INTEGER,
             remark VARCHAR(30),
-            amount INTEGER
+            amount INTEGER,
+            type VARCHAR(20)
         )
         """)
     
@@ -28,8 +29,8 @@ class Bank:
         db_query(f"UPDATE Customers SET balance = {new_balance} WHERE username = '{self.__username}';")
         self.balanceenquiry()
         db_query(f"""
-        INSERT INTO {self.__username}_transaction (timedate, account_number, remark, amount)
-        VALUES ('{datetime.now()}', {self.__account_number}, 'Amount Deposit', {amount})
+        INSERT INTO {self.__username}_transaction (timedate, account_number, remark, amount, type)
+        VALUES ('{datetime.now()}', {self.__account_number}, 'Amount Deposit', {amount},'Credit')
         """)
         print(f"{self.__username} Amount is Sucessfully Depositted into Your Account {self.__account_number}")
 
@@ -42,8 +43,8 @@ class Bank:
         db_query(f"UPDATE Customers SET balance = {new_balance} WHERE username = '{self.__username}';")
         self.balanceenquiry()
         db_query(f"""
-        INSERT INTO {self.__username}_transaction (timedate, account_number, remark, amount)
-        VALUES ('{datetime.now()}', {self.__account_number}, 'Amount Withdrawn', {amount})
+        INSERT INTO {self.__username}_transaction (timedate, account_number, remark, amount, type)
+        VALUES ('{datetime.now()}', {self.__account_number}, 'Amount Withdrawn', {amount},'Debit')
         """)
         print(f"{self.__username}Money Withdrawn Successfully from your Account {self.__account_number}")
 
@@ -58,14 +59,21 @@ class Bank:
         if not temp2:
             print("Receiver account does not exist.")
             return
-
         sender_new_balance = temp[0][0] - amount
         receiver_new_balance = temp2[0][0] + amount
         db_query(f"UPDATE Customers SET balance = {sender_new_balance} WHERE username = '{self.__username}';")
         db_query(f"UPDATE Customers SET balance = {receiver_new_balance} WHERE account_number = {receiver};")
+        receiver_username = db_query(f"SELECT username FROM Customers WHERE account_number = '{receiver}';")
         self.balanceenquiry()
+        
         db_query(f"""
-        INSERT INTO {self.__username}_transaction (timedate, account_number, remark, amount)
-        VALUES ('{datetime.now()}', {self.__account_number}, 'Fund Transferred', {amount})
+        INSERT INTO {receiver_username[0][0]}_transaction (timedate, account_number, remark, amount, type)
+        VALUES ('{datetime.now()}', {self.__account_number}, 'Fund Recieved From {self.__account_number}', {amount},'Credit')
         """)
+        
+        db_query(f"""
+        INSERT INTO {self.__username}_transaction (timedate, account_number, remark, amount, type)
+        VALUES ('{datetime.now()}', {self.__account_number}, 'Fund Transferred --> {receiver}', {amount},'Debit')
+        """)
+        
         print(f"{self.__username}Money Transferred Successfully from your Account {self.__account_number} to {receiver}")
