@@ -109,16 +109,7 @@ The project includes the following key files:
   Enter the receiver's account number: 87654321
   Enter the amount to transfer: 200
   ```
-
-## Project Roadmap
-
-- [x] Basic Banking Operations
-- [x] User Authentication
-- [x] Transaction History
-- [ ] Admin Management Interface
-- [ ] Enhanced Error Handling and Logging
-- [ ] Extended Report Generation and Analysis
-
+  
 ## Troubleshooting
 
 - **Database Connection Issues**: Ensure that MySQL is running and your credentials are correctly set in `databases.py`.
