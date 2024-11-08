@@ -7,7 +7,7 @@ print("WELCOME TO QUINTELL BANKING")
 
 while True:
     try:
-        register = int(input("1. SIGN UP\n""2. SIGN IN"))
+        register = int(input("1. SIGN UP\n""2. SIGN IN\n"))
         
         if register ==  1 or register == 2:
             if register == 1:
@@ -33,7 +33,8 @@ while status:
         facility = int(input("1. BALANCE ENQUIRY\n"
                             "2. CASH DEPOSIT\n"
                             "3. CASH WITHDRAW\n"
-                            "4. FUND TRANSFER\n"))
+                            "4. FUND TRANSFER\n"
+                            "5. END SESSION\n"))
         
         if facility >=  1 or facility <= 5:
             if facility == 1:
@@ -44,48 +45,48 @@ while status:
             elif facility == 2:
                 while True:
                     try:
-                        amount = int(input("Enter the amount to Deposit"))
+                        amount = int(input("Enter the amount to Deposit:\n"))
                         bobj = Bank(user,account_number[0][0])
                         bobj.deposit(amount)
                         mydbs.commit()
                         break
                     except ValueError:
-                        print("Invalid input. Please enter Numeric input")
+                        print("Invalid input. Please enter Numeric input\n")
                         continue
                 
                 
             elif facility == 3:
                 while True:
                     try:
-                        amount = int(input("Enter the amount to Withdraw"))
+                        amount = int(input("Enter the amount to Withdraw:\n"))
                         bobj = Bank(user,account_number[0][0])
                         bobj.withdraw(amount)
                         mydbs.commit()
                         break
                     except ValueError:
-                        print("Invalid input. Please enter Numeric input")
+                        print("Invalid input. Please enter Numeric input\n")
                         continue
                 
                 
             elif facility == 4:
                 while True:
                     try:
-                        receiver = int(input("Enter Receiver Account Number"))
-                        amount = int(input("Enter the amount to Transfer"))
+                        receiver = int(input("Enter Receiver Account Number:\n"))
+                        amount = int(input("Enter the amount to Transfer:\n"))
                         bobj = Bank(user,account_number[0][0])
                         bobj.fundtransfer(receiver, amount)   
                         break
                     except ValueError:
-                        print("Invalid input. Please enter Numeric input")
+                        print("Invalid input. Please enter Numeric input\n")
                         continue
             
             elif facility == 5:
-                print("Thank you for using QUINTELL BANKING")
+                print("Thank you for using QUINTELL BANKING\n")
                 status = False
                         
         else:
-            print("Please enter a Valid input From Options.")
+            print("Please enter a Valid input From Options.\n")
             
     except ValueError:
-        print("INVALID INPUT TRY AGAIN WITH CORRECT OPTION")
+        print("INVALID INPUT TRY AGAIN WITH CORRECT OPTION\n")
         continue
