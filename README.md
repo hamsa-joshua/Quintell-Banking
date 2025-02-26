@@ -51,8 +51,7 @@ The project includes the following key files:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/hamsa-joshua/Management-Systems.git
-   cd Management-Systems
+   git clone https://github.com/hamsa-joshua/Quintell-Banking.git 
    ```
 
 2. **Set Up the Database**:
