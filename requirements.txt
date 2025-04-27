@@ -1,0 +1,11 @@
+mysql-connector-python
+cryptography
+jinja2
+redis
+regex
+tornado
+docutils
+ipywidgets
+pillow
+pyopenssl
+keyring
