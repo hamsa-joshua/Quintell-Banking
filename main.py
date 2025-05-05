@@ -48,7 +48,7 @@ while status:
                         amount = int(input("Enter the amount to Deposit:\n"))
                         bobj = Bank(user,account_number[0][0])
                         bobj.deposit(amount)
-                        mydbs.commit()
+                        db.commit()
                         break
                     except ValueError:
                         print("Invalid input. Please enter Numeric input\n")
@@ -61,7 +61,7 @@ while status:
                         amount = int(input("Enter the amount to Withdraw:\n"))
                         bobj = Bank(user,account_number[0][0])
                         bobj.withdraw(amount)
-                        mydbs.commit()
+                        db.commit()
                         break
                     except ValueError:
                         print("Invalid input. Please enter Numeric input\n")

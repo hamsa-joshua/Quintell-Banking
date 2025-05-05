@@ -12,5 +12,5 @@ class Customer:
         
     def createuser(self):
         db_query(f"INSERT INTO Customers VALUES ('{self.__username}','{self.__password}','{self.__name}','{self.__age}','{self.__city}','{self.__account_number}','{self.__balance}',True)")
-        mydbs.commit()
+        db.commit()
         

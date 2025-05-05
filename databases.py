@@ -1,14 +1,15 @@
 import mysql.connector as sql
 
+import MySQLdb
 
-mydbs = sql.connect(
+db = MySQLdb.connect(
     host="localhost",
-    user="root",
-    password="Kushi@2004",
-    database="Bank"
-    )
+    user="quintelluser",
+    passwd="josh1234",
+    db="quintellbank"
+)
 
-cursor = mydbs.cursor()
+cursor = db.cursor()
 
 def db_query(str):
     cursor.execute(str)
@@ -29,7 +30,7 @@ def createcustomertable():
 
 ''') 
 
-mydbs.commit()
+db.commit()
 
 if __name__ == "__main__":
     createcustomertable()
